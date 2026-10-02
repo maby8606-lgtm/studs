@@ -1,0 +1,169 @@
+:root {
+  --bg: #05060f;
+  --card: #1a1a2e;
+  --pink: #f472b6;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+html,
+body {
+  background: #05060f;
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  width: 100%;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 800;
+  color: var(--text);
+  margin: 0;
+}
+
+h1 {
+  font-size: 56px;
+  line-height: 1.12;
+  letter-spacing: -1.68px;
+  @media (max-width: 1024px) {
+    font-size: 36px;
+  }
+}
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+}
+h3 {
+  line-height: 1.25;
+}
+p {
+  margin: 0;
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: #1f2028;
+  color: var(--text);
+}
+
+button {
+  font-family: inherit;
+}
+
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+::selection {
+  background: rgba(244, 114, 182, 0.45);
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-thumb {
+  background: #2c2c44;
+  border-radius: 8px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Order-timeline "current step" pulse */
+@keyframes studsPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(244, 114, 182, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(244, 114, 182, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(244, 114, 182, 0);
+  }
+}
+.studs-pulse {
+  animation: studsPulse 1.8s ease-out infinite;
+}
+
+/* Loading skeleton shimmer */
+@keyframes studsShimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+.studs-skeleton {
+  background: linear-gradient(90deg, #14142a 25%, #20203a 50%, #14142a 75%);
+  background-size: 800px 100%;
+  animation: studsShimmer 1.4s infinite linear;
+}
+
+/* Mobile foundations: pages are inline-styled; these rules keep any stray
+   wide element from forcing horizontal scroll on phones, and stop iOS from
+   auto-zooming when a small input gains focus. */
+html,
+body {
+  overflow-x: clip;
+}
+
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea,
+a {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(244, 114, 182, 0.25);
+}
+
+@media (max-width: 640px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}

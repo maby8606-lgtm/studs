@@ -8,11 +8,8 @@ export class WalletController {
 
   @Get()
   @UseGuards(JwtAuthGuard)
-  getBalance(@Req() req) {
-    const wallet = this.authService.getWallet(req.user.sub);
-    return {
-      balance: wallet ? wallet.balance : 0,
-      currency: "GHS"
-    };
+  async getWallet(@Req() req) {
+    const wallet = await this.authService.getWallet(req.user.sub); // or req.user.userId if needed
+    return wallet || { balance: 0, currency: 'GHS' };
   }
 }
